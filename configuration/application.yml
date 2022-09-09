@@ -12,12 +12,18 @@ server:
     mime-types: text/html,text/plain,text/css,application/javascript,application/json,text/xml,application/xml,application/xml+rss,text/javascript
     min-response-size: 1024
 spring:
-  config:
-    import: file:${DEPLOYMENT_CONFIG}
+  profiles:
+    include: ovsx
+ # config:
+  #  import: file:${DEPLOYMENT_CONFIG}
   cache:
     jcache:
       config: classpath:ehcache.xml
   datasource:
+    url: jdbc:postgres://postgrespw@localhost:49153
+    username:
+    password:
+    driver-class-name: org.postgresql.Driver
     hikari:
       maximum-pool-size: 10
   flyway:
